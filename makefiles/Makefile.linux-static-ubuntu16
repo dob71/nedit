@@ -1,0 +1,19 @@
+# $Id: Makefile.linux-static,v 1.1 2006/10/26 02:20:16 tringali Exp $
+CC=cc
+AR=ar
+
+# For editres, add -DEDITRES to CFLAGS and -lXmu to LIBS
+#
+# To evaluate an alternative layout for the Replace/Find dialog, add
+# -DREPLACE_SCOPE to the CFLAGS. See the README file for more information.
+#
+CFLAGS=-O -I/usr/X11R6/include -DUSE_DIRENT -DUSE_LPR_PRINT_CMD -DNO_XMIM 
+
+ARFLAGS=-urs
+
+LIBS=-L/usr/X11R6/lib -Wl,-Bstatic -lXm -lXt -lXft -lSM -lICE -lX11 -lXm -lXext -lXmu -lXrender -lxcb -lXau -lXdmcp -Wl,-Bdynamic -ljpeg -lpng12 -lfontconfig -lfreetype -ldl -lm
+#LIBS=-L/usr/X11R6/lib -Wl,-Bstatic -lXm -lXt -lXft -lSM -lICE -lX11 -lXm -lXext -lXmu -lXrender -lxcb -lXau -lXdmcp -lfontconfig -lfreetype -lexpat -Wl,-Bdynamic -ljpeg -lpng12 -lz -ldl -lm
+
+
+include Makefile.common
+
